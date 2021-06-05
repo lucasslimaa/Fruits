@@ -1,6 +1,7 @@
 ﻿using Application;
 using Application.DTOs.User;
 using Domain.Entities.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,7 @@ namespace Fruits.API.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
@@ -72,6 +74,7 @@ namespace Fruits.API.Controllers
             return Unauthorized();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
@@ -93,6 +96,7 @@ namespace Fruits.API.Controllers
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("register-admin")]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
