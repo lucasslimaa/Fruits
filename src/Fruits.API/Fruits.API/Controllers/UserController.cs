@@ -19,15 +19,15 @@ namespace Fruits.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AuthenticateController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration _configuration;
 
-        private readonly ILogger<AuthenticateController> _logger;
+        private readonly ILogger<UserController> _logger;
 
-        public AuthenticateController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, ILogger<AuthenticateController> logger)
+        public UserController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, ILogger<UserController> logger)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
@@ -36,6 +36,7 @@ namespace Fruits.API.Controllers
         }
 
         [AllowAnonymous]
+        [Route("login")]
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
