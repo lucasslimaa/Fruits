@@ -1,5 +1,5 @@
 ﻿using Application;
-using Application.DTOs.User;
+using Application.DTOs.Users;
 using Domain.Entities.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
