@@ -38,7 +38,7 @@ namespace Fruits.API.Controllers
         [AllowAnonymous]
         [Route("login")]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
             var user = await userManager.FindByNameAsync(model.UserName);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
@@ -78,7 +78,7 @@ namespace Fruits.API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        public async Task<IActionResult> Register([FromBody] RegisterDTO model)
         {
             var userExists = await userManager.FindByNameAsync(model.UserName);
             if (userExists != null)
@@ -100,7 +100,7 @@ namespace Fruits.API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("register-admin")]
-        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
+        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterDTO model)
         {
             var userExists = await userManager.FindByNameAsync(model.UserName);
             if (userExists != null)
