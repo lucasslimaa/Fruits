@@ -41,7 +41,6 @@ namespace Fruits.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Fruits.API", Version = "v1" });
             });
 
-            //var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:secret"].ToString());
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
